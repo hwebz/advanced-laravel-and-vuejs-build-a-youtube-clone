@@ -3,9 +3,9 @@
 namespace App;
 
 use Illuminate\Support\Str;
+use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
 {
@@ -16,8 +16,8 @@ class User extends Authenticatable
 
     protected static function boot() {
         parent::boot();
-        static::creating(function($model) {
-            // $model->id = Str::uuid();
+
+        static::creating(function ($model) {
             $model->{$model->getKeyName()} = Str::uuid();
         });
     }

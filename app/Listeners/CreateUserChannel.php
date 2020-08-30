@@ -1,12 +1,13 @@
 <?php
 
-namespace App\Listeners\Channels;
+namespace App\Listeners;
 
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
+use Illuminate\Contracts\Queue\ShouldQueue;
 
 class CreateUserChannel
 {
+
     /**
      * Handle the event.
      *
