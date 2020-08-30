@@ -41,7 +41,7 @@
                                     @click.prevent="toggleSubscription"
                                 >
                                     @{{ owner ? '' : subscribed ? 'Unsubscribe' : 'Subscribe' }}
-                                    @{{ subscriptions.length }}
+                                    @{{ count }}
                                     @{{ owner ? 'Subscribers' : ''}}
                                 </button>
                             </subscribe-button>
