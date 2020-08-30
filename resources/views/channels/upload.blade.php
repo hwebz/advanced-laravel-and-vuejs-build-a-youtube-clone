@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+<div class="container-fluid">
     <div class="row justify-content-center">
         <channel-uploads
             inline-template
@@ -14,9 +14,9 @@
                     <button class="btn btn-primary" onclick="document.getElementById('video-files').click()">Start upload</button>
                 </div>
                 <div class="card p-3" v-else>
-                    <div class="my-4">
+                    <div class="my-4" v-for="video in videos">
                         <div class="progress mb-3">
-                            <div class="progress-bar progress-bar-striped progress-bar-animated" style="width: 50%"></div>
+                            <div class="progress-bar progress-bar-striped progress-bar-animated" :style="{ width: `${progress[video.name]}%` }"></div>
                         </div>
                         <div class="row">
                             <div class="col-md-4">
@@ -26,7 +26,7 @@
                             </div>
                             <div class="col-md-4">
                                 <h4 class="text-center">
-                                    My Awesome Video
+                                    @{{ video.name }}
                                 </h4>
                             </div>
                         </div>
