@@ -58,6 +58,10 @@
                             </div>
                         @endif
 
+                        <div class="text-center">
+                            <button class="btn btn-danger">Subscribe 7k</button>
+                        </div>
+
                     @if($channel->editable())
                             <button class="btn btn-info">Update Channel</button>
                         </form>
