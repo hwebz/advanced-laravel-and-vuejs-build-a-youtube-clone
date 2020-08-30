@@ -241,14 +241,20 @@ Migrade auth database
 
 > docker run --rm -v $(pwd):/app composer require "spatie/laravel-medialibrary:^7.0.0"
 
-> docker-compose exec app php artisan vendor:publish
+> art vendor:publish
 
 > Choose Provider:  Spatie\MediaLibrary\MediaLibraryServiceProvider
 
 
 ### Link image inside storage/app/public -> public/storage for viewers
-> docker-compose exec app php artisan storage:link
+> art storage:link
 
 
 ## Some commands
-> docker-compose exec app php artisan make:request Channels/UpdateChannelRequest
+> art make:request Channels/UpdateChannelRequest
+
+> art make:factory Subscription
+
+> art make:factory Subscription
+
+> art db:seed

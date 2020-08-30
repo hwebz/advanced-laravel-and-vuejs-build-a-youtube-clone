@@ -25,6 +25,20 @@
                             </div>
                         </div>
 
+                        <div class="form-group">
+                            <h4 class="text-center">{{ $channel->name }}</h4>
+                            <p class="text-center">{{ $channel->description }}</p>
+                        </div>
+
+                        <div class="text-center">
+                            <subscribe-button inline-template :subscriptions="{{ $channel->subscriptions }}">
+                                <button
+                                    class="btn btn-danger"
+                                    @click="toggleSubscription"
+                                >Subscribe 7k</button>
+                            </subscribe-button>
+                        </div>
+
                         @if($channel->editable())
                             <input onchange="document.getElementById('update-channel-form').submit()" type="file" name="image" id="image" style="display: none;"/>
 
@@ -50,22 +64,7 @@
                                     @endforeach
                                 </ul>
                             @endif
-
-                        @else
-                            <div class="form-group">
-                                <h4 class="text-center">{{ $channel->name }}</h4>
-                                <p class="text-center">{{ $channel->description }}</p>
-                            </div>
                         @endif
-
-                        <div class="text-center">
-                            <subscribe-button inline-template :subscriptions="{{ $channel->subscriptions }}">
-                                <button
-                                    class="btn btn-danger"
-                                    @click="toggleSubscription"
-                                >Subscribe 7k</button>
-                            </subscribe-button>
-                        </div>
 
                     @if($channel->editable())
                             <button class="btn btn-info">Update Channel</button>

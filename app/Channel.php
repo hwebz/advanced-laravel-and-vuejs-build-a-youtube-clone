@@ -15,6 +15,7 @@ class Channel extends Model implements HasMedia
     }
 
     public function image() {
+        if (!$this->media->first()) return null;
         return $this->media->first()->getFullUrl('thumb');
     }
 
