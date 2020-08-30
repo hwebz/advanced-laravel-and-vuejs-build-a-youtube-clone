@@ -31,11 +31,19 @@
                         </div>
 
                         <div class="text-center">
-                            <subscribe-button inline-template :subscriptions="{{ $channel->subscriptions }}">
+                            <subscribe-button
+                                inline-template
+                                :subscriptions="{{ $channel->subscriptions }}"
+                                :channel="{{ $channel }}"
+                            >
                                 <button
                                     class="btn btn-danger"
-                                    @click="toggleSubscription"
-                                >Subscribe 7k</button>
+                                    @click.prevent="toggleSubscription"
+                                >
+                                    @{{ owner ? '' : subscribed ? 'Unsubscribe' : 'Subscribe' }}
+                                    @{{ subscriptions.length }}
+                                    @{{ owner ? 'Subscribers' : ''}}
+                                </button>
                             </subscribe-button>
                         </div>
 
