@@ -10913,6 +10913,7 @@ a.text-dark:focus {
   height: 100px;
   border: 1px solid rgba(0, 0, 0, 0.25);
   position: relative;
+  cursor: pointer;
 }
 
 .channel-avatar .channel-avatar-overlay {

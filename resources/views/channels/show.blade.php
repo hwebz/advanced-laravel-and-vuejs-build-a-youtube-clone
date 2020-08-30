@@ -59,7 +59,12 @@
                         @endif
 
                         <div class="text-center">
-                            <button class="btn btn-danger">Subscribe 7k</button>
+                            <subscribe-button inline-template :subscriptions="{{ $channel->subscriptions }}">
+                                <button
+                                    class="btn btn-danger"
+                                    @click="toggleSubscription"
+                                >Subscribe 7k</button>
+                            </subscribe-button>
                         </div>
 
                     @if($channel->editable())
