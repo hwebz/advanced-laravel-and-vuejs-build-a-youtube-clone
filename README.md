@@ -221,3 +221,18 @@ Configuring cache for laravel
 > \>>> \DB::table('migrations')->get();
 
 ## 17. Accessing to http://localhost or http://your_ip_address
+
+# Frontend Scaffolding with Vue
+> docker run --rm -v $(pwd):/app composer require laravel/ui
+
+Scaffolding bootstrap and vue with login / registration
+
+> docker-compose exec app php artisan ui bootstrap --auth
+
+> docker-compose exec app php artisan vue --auth
+
+Migrade auth database
+
+> alias art='docker-compose exec app php artisan'
+
+> art migrate
