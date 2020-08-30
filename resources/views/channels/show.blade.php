@@ -33,7 +33,7 @@
                         <div class="text-center">
                             <subscribe-button
                                 inline-template
-                                :subscriptions="{{ $channel->subscriptions }}"
+                                :initial-subscriptions="{{ $channel->subscriptions }}"
                                 :channel="{{ $channel }}"
                             >
                                 <button
