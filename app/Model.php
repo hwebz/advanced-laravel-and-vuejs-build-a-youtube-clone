@@ -10,6 +10,8 @@ class Model extends BaseModel
     // art migrate:fresh
     public $incrementing = false;
 
+    protected $guarded = [];
+
     protected static function boot() {
         parent::boot();
         static::creating(function($model) {
