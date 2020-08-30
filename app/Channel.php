@@ -18,6 +18,11 @@ class Channel extends Model implements HasMedia
         return $this->media->first()->getFullUrl('thumb');
     }
 
+    public function editable() {
+        if (!auth()->check()) return false;
+        return $this->user_id === auth()->user()->id;
+    }
+
     public function registerMediaConversions(?Media $media = null)
     {
         $this->addMediaConversion('thumb')

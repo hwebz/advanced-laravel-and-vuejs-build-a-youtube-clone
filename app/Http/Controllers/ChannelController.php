@@ -3,10 +3,17 @@
 namespace App\Http\Controllers;
 
 use App\Channel;
+use App\Http\Requests\Channels\UpdateChannelRequest;
 use Illuminate\Http\Request;
 
 class ChannelController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware(['auth'])->only('update');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -67,13 +74,18 @@ class ChannelController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Channel $channel)
+    public function update(UpdateChannelRequest $request, Channel $channel)
     {
         if ($request->hasFile('image')) {
             $channel->clearMediaCollection(('images'));
             $channel->addMediaFromRequest('image')
                 ->toMediaCollection('images');
         }
+
+        $channel->update([
+            'name' => $request->name,
+            'description' => $request->description
+        ]);
 
         // dd($channel->image());
         return redirect()->back();

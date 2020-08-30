@@ -248,3 +248,7 @@ Migrade auth database
 
 ### Link image inside storage/app/public -> public/storage for viewers
 > docker-compose exec app php artisan storage:link
+
+
+## Some commands
+> docker-compose exec app php artisan make:request Channels/UpdateChannelRequest
