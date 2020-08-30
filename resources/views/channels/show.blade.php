@@ -17,10 +17,11 @@
                         <div class="form-group row justify-content-center">
                             <div class="channel-avatar">
                                 <div class="channel-avatar-overlay" onclick="document.getElementById('image').click()"></div>
+                                <img src="{{ $channel->image() }}" />
                             </div>
                         </div>
 
-                        <input onchange="document.getElementById('update-channel-form').submit()" type="file" id="image" style="display: none;"/>
+                        <input onchange="document.getElementById('update-channel-form').submit()" type="file" name="image" id="image" style="display: none;"/>
 
                         <div class="form-group">
                             <label for="name" class="form-control-label">

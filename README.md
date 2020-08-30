@@ -236,3 +236,15 @@ Migrade auth database
 > alias art='docker-compose exec app php artisan'
 
 > art migrate
+
+### Media Library
+
+> docker run --rm -v $(pwd):/app composer require "spatie/laravel-medialibrary:^7.0.0"
+
+> docker-compose exec app php artisan vendor:publish
+
+> Choose Provider:  Spatie\MediaLibrary\MediaLibraryServiceProvider
+
+
+### Link image inside storage/app/public -> public/storage for viewers
+> docker-compose exec app php artisan storage:link
