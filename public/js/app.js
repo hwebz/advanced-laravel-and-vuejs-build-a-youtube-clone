@@ -50645,12 +50645,28 @@ Vue.component('subscribe-button', {
     },
     count: function count() {
       return numeral__WEBPACK_IMPORTED_MODULE_0___default()(this.subscriptions.length).format('0a');
+    },
+    subscription: function subscription() {
+      if (!__auth()) return null;
+      return this.subscriptions.find(function (subscription) {
+        return subscription.user_id === __auth().id;
+      });
     }
   },
   methods: {
     toggleSubscription: function toggleSubscription() {
       if (!__auth()) {
         alert('Please login to subscribe');
+      }
+
+      if (this.owner) {
+        return alert('You cannot subscribe to your channel.');
+      }
+
+      if (this.subscribed) {
+        axios["delete"]("/channels/".concat(this.channel.id, "/subscriptions/").concat(this.subscription.id));
+      } else {
+        axios.post("/channels/".concat(this.channel.id, "/subscriptions"));
       }
     }
   }
