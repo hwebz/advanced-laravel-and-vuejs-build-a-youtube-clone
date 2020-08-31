@@ -258,6 +258,8 @@ Migrade auth database
 
 > art make:job Videos/CreateVideoThumbnail
 
+> art make:request Videos/UpdateVideoRequest
+
 ### Link image inside storage/app/public -> public/storage for viewers
 > art storage:link
 
