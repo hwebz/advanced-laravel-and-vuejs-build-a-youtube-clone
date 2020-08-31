@@ -40,6 +40,7 @@
                                 <votes
                                     :default_votes="{{ $video->votes }}"
                                     owner_id="{{ $video->channel->user_id }}"
+                                    entity_id="{{ $video->id }}"
                                 />
                             </div>
 

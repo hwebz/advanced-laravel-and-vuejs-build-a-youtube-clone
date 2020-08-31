@@ -68,9 +68,14 @@ export default {
             default: () => []
         },
         owner_id: {
-            type: Object,
+            type: String,
             require: true,
-            default: () => {}
+            default: ''
+        },
+        entity_id: {
+            type: String,
+            require: true,
+            default: ''
         }
     },
     data() {
@@ -94,19 +99,45 @@ export default {
         upvoted() {
             if (!__auth()) return false;
 
-            return this.upvotes.find(vote => vote.user__id === __auth().id);
+            return !!this.upvotes.find(vote => vote.user_id === __auth().id);
         },
         downvoted() {
             if (!__auth()) return false;
 
-            return this.downvotes.find(vote => vote.user__id === __auth().id);
+            return !!this.downvotes.find(vote => vote.user_id === __auth().id);
         }
     },
     methods: {
         vote(type) {
             if (__auth() && __auth().id === this.owner_id) {
-                alert('You cannot vote your own video');
+                return alert('You cannot vote your own video');
             }
+
+            if (!__auth()) {
+                return alert('Pleae login to vote');
+            }
+
+            if (type === 'up' && this.upvoted) return;
+
+            if (type === 'down' && this.downvoted) return;
+
+            axios.post(`/votes/${this.entity_id}/${type}`)
+                .then(({ data }) => {
+                    if (this.upvoted || this.downvoted) {
+                        this.votes = this.votes.map(vote => {
+                            if (vote.user_id === __auth().id) {
+                                return data;
+                            }
+
+                            return vote;
+                        });
+                    } else {
+                        this.votes = [
+                            ...this.votes,
+                            data
+                        ];
+                    }
+                });
         }
     }
 }

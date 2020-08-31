@@ -26,6 +26,23 @@ class User extends Authenticatable
         return $this->hasOne(Channel::class);
     }
 
+    public function toggleVote($entity, $type) {
+        $vote = $entity->votes->where('user_id', $this->id)->first();
+
+        if ($vote) {
+            $vote->update([
+                'type' => $type
+            ]);
+
+            return $vote->refresh();
+        } else {
+            return $entity->votes()->create([
+                'type' => $type,
+                'user_id' => $this->id
+            ]);
+        }
+    }
+
     /**
      * The attributes that are mass assignable.
      *
