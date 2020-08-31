@@ -1911,6 +1911,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue_avatar__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue-avatar */ "./node_modules/vue-avatar/dist/vue-avatar.min.js");
 /* harmony import */ var vue_avatar__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue_avatar__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _replies_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./replies.vue */ "./resources/js/components/replies.vue");
+/* harmony import */ var _votes_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./votes.vue */ "./resources/js/components/votes.vue");
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
 
 function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -1959,12 +1960,20 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
     Avatar: vue_avatar__WEBPACK_IMPORTED_MODULE_0___default.a,
-    Replies: _replies_vue__WEBPACK_IMPORTED_MODULE_1__["default"]
+    Replies: _replies_vue__WEBPACK_IMPORTED_MODULE_1__["default"],
+    Votes: _votes_vue__WEBPACK_IMPORTED_MODULE_2__["default"]
   },
   props: {
     video: {
@@ -2011,6 +2020,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue_avatar__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue-avatar */ "./node_modules/vue-avatar/dist/vue-avatar.min.js");
 /* harmony import */ var vue_avatar__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue_avatar__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _votes_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./votes.vue */ "./resources/js/components/votes.vue");
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
 
 function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -2054,10 +2064,18 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
-    Avatar: vue_avatar__WEBPACK_IMPORTED_MODULE_0___default.a
+    Avatar: vue_avatar__WEBPACK_IMPORTED_MODULE_0___default.a,
+    Votes: _votes_vue__WEBPACK_IMPORTED_MODULE_1__["default"]
   },
   props: {
     comment: {
@@ -39016,6 +39034,14 @@ var render = function() {
                 _vm._v(" "),
                 _c("small", [_vm._v(_vm._s(comment.body))]),
                 _vm._v(" "),
+                _c("votes", {
+                  attrs: {
+                    default_votes: comment.votes,
+                    entity_id: comment.id,
+                    owner_id: comment.user.id
+                  }
+                }),
+                _vm._v(" "),
                 _c("replies", { attrs: { comment: comment } })
               ],
               1
@@ -39087,24 +39113,37 @@ var render = function() {
       _vm._l(_vm.replies.data, function(reply, replyIndex) {
         return _c(
           "div",
-          { key: replyIndex, staticClass: "media mt-3" },
+          { key: replyIndex, staticClass: "media my-3" },
           [
             _c("avatar", {
               staticClass: "mr-3",
               attrs: { username: reply.user.name, size: 30 }
             }),
             _vm._v(" "),
-            _c("div", { staticClass: "media-body" }, [
-              _c("h6", { staticClass: "mt-0" }, [
-                _vm._v(
-                  "\n                " +
-                    _vm._s(reply.user.name) +
-                    "\n            "
-                )
-              ]),
-              _vm._v(" "),
-              _c("small", [_vm._v(_vm._s(reply.body))])
-            ])
+            _c(
+              "div",
+              { staticClass: "media-body" },
+              [
+                _c("h6", { staticClass: "mt-0" }, [
+                  _vm._v(
+                    "\n                " +
+                      _vm._s(reply.user.name) +
+                      "\n            "
+                  )
+                ]),
+                _vm._v(" "),
+                _c("small", [_vm._v(_vm._s(reply.body))]),
+                _vm._v(" "),
+                _c("votes", {
+                  attrs: {
+                    default_votes: reply.votes,
+                    entity_id: reply.id,
+                    owner_id: reply.user.id
+                  }
+                })
+              ],
+              1
+            )
           ],
           1
         )

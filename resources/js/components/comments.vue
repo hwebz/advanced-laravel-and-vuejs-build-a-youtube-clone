@@ -15,6 +15,12 @@
                     {{ comment.user.name }}
                 </h6>
                 <small>{{ comment.body }}</small>
+
+                <votes
+                    :default_votes="comment.votes"
+                    :entity_id="comment.id"
+                    :owner_id="comment.user.id"
+                />
                 <replies :comment="comment" />
             </div>
         </div>
@@ -31,11 +37,13 @@
 <script>
     import Avatar from 'vue-avatar';
     import Replies from './replies.vue';
+    import Votes from './votes.vue';
 
     export default {
         components: {
             Avatar,
-            Replies
+            Replies,
+            Votes
         },
         props: {
             video: {

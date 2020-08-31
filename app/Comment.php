@@ -5,7 +5,7 @@ namespace App;
 class Comment extends Model
 {
 
-    protected $with = ['user'];
+    protected $with = ['user', 'votes'];
 
     protected $appends = ['repliesCount'];
 
@@ -19,6 +19,10 @@ class Comment extends Model
 
     public function replies() {
         return $this->hasMany(Comment::class, 'comment_id')->whereNotNull('comment_id');
+    }
+
+    public function votes() {
+        return $this->morphMany(Vote::class, 'voteable');
     }
 
     public function getRepliesCountAttribute() {

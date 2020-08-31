@@ -6,7 +6,7 @@
                 <small>Add comment</small>
             </button>
         </div>
-        <div class="media mt-3" v-for="(reply, replyIndex) in replies.data" :key="replyIndex">
+        <div class="media my-3" v-for="(reply, replyIndex) in replies.data" :key="replyIndex">
             <avatar :username="reply.user.name" :size="30" class="mr-3" />
 
             <div class="media-body">
@@ -14,6 +14,12 @@
                     {{ reply.user.name }}
                 </h6>
                 <small>{{ reply.body }}</small>
+
+                <votes
+                    :default_votes="reply.votes"
+                    :entity_id="reply.id"
+                    :owner_id="reply.user.id"
+                />
             </div>
         </div>
 
@@ -25,10 +31,12 @@
 
 <script>
     import Avatar from 'vue-avatar';
+    import Votes from './votes.vue';
 
     export default {
         components: {
-            Avatar
+            Avatar,
+            Votes
         },
         props: {
             comment: {
