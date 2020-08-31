@@ -33,6 +33,7 @@
 @section('scripts')
     <script src="https://vjs.zencdn.net/7.5.4/video.js"></script>
     <script>
-        videojs('#my_video_1');
+        window.CURRENT_VIDEO = '{{ $video->id }}';
     </script>
+    <script src='{{ asset('js/player.js') }}'></script>
 @endsection
