@@ -2,6 +2,27 @@
 ### Author: Kati Frantz
 ### Publisher: Packt
 
+## How to run project locally
+> docker-compose build
+
+> docker-compose up -d
+
+> docker run --rm -v $(pwd):/app composer install
+
+> npm install
+
+> npm run dev
+
+> docker-compose exec app php artisan key:generate
+
+> docker-compose exec db bash (Create mysql user for laravel)
+
+> Make .env file and using DB_HOST=db
+
+> docker-compose exec app php artisan migrate
+
+> docker-compose exec app php artisan db:seed
+
 ## How to setup Laralvel + PHP + MySQL + Nginx on Docker
 Clone  laravel repo to your local env
 1. > git clone https://github.com/laravel/laravel.git my-laravel-app

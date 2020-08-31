@@ -75,6 +75,8 @@
                     </form>
                 @endif
             </div>
+
+            <comments :video="{{ $video }}" />
         </div>
     </div>
 </div>
