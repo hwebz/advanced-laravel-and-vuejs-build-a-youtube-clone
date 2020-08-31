@@ -15,4 +15,13 @@ class CommentController extends Controller
     public function show(Comment $comment) {
         return $comment->replies()->paginate(10);
     }
+
+    public function store(Request $request, Video $video) {
+        return auth()->user()->comments()->create([
+            'body' => $request->body,
+            'comment_id' => $request->comment_id,
+            'video_id' => $video->id
+        ])->fresh();
+        // fresh() to load all relationship after created
+    }
 }
