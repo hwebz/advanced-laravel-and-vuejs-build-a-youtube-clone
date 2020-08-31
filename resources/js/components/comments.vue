@@ -24,9 +24,10 @@
         </div>
 
         <div class="text-center">
-            <button class="btn btn-success">
+            <button v-if="comments.next_page_url" @click="fetchComments" class="btn btn-success">
                 Load More
             </button>
+            <span v-else>No more comments to show</span>
         </div>
     </div>
 </template>
@@ -57,9 +58,18 @@
         },
         methods: {
             fetchComments() {
-                axios.get(`/videos/${this.video.id}/comments`)
+                const url = this.comments.next_page_url ? this.comments.next_page_url : `/videos/${this.video.id}/comments`;
+                axios.get(url)
                     .then(({ data }) => {
-                        this.comments = data;
+                        this.comments = {
+                            ...data,
+                            data: [
+                                ...this.comments.data,
+                                ...data.data
+                            ]
+                        }
+
+
                     })
             }
         }
