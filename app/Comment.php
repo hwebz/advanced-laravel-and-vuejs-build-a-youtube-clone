@@ -7,6 +7,8 @@ class Comment extends Model
 
     protected $with = ['user'];
 
+    protected $appends = ['repliesCount'];
+
     public function video() {
         return $this->belongsTo(Video::class);
     }
@@ -17,5 +19,9 @@ class Comment extends Model
 
     public function replies() {
         return $this->hasMany(Comment::class, 'comment_id')->whereNotNull('comment_id');
+    }
+
+    public function getRepliesCountAttribute() {
+        return $this->replies->count();
     }
 }

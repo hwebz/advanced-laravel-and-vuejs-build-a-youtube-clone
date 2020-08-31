@@ -1,6 +1,13 @@
 <template>
     <div class="card mt-5 p-5">
-        <div class="media" v-for="(comment, commentIndex) in comments.data" :key="commentIndex">
+        <div class="form-inline my-4 w-full">
+            <input type="text" class="form-control form-control-sm w-80" />
+            <button class="btn btn-sm btn-primary">
+                <small>Add comment</small>
+            </button>
+        </div>
+
+        <div class="media my-3" v-for="(comment, commentIndex) in comments.data" :key="commentIndex">
             <avatar :username="comment.user.name" :size="30" class="mr-3" />
 
             <div class="media-body">
@@ -8,18 +15,7 @@
                     {{ comment.user.name }}
                 </h6>
                 <small>{{ comment.body }}</small>
-                <div class="form-inline my-4 w-full">
-                    <input type="text" class="form-control form-control-sm w-80" />
-                    <button class="btn btn-sm btn-primary">
-                        <small>Add comment</small>
-                    </button>
-                </div>
-
-                <div class="media mt-3">
-                    <a href="#" class="mr-3">
-
-                    </a>
-                </div>
+                <replies :comment="comment" />
             </div>
         </div>
 
@@ -34,10 +30,12 @@
 
 <script>
     import Avatar from 'vue-avatar';
+    import Replies from './replies.vue';
 
     export default {
         components: {
-            Avatar
+            Avatar,
+            Replies
         },
         props: {
             video: {
@@ -70,7 +68,7 @@
                         }
 
 
-                    })
+                    });
             }
         }
     }
