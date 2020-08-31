@@ -1,6 +1,7 @@
 ## Advanced Laravel and Vue.js: Build a Youtube Clone
 ### Author: Kati Frantz
 ### Publisher: Packt
+### Source code: https://github.com/bahdcoder/build-a-youtube-clone-in-laravel-and-vuejs
 
 ## How to run project locally
 > docker-compose build
