@@ -7,7 +7,7 @@
             </button>
         </div>
 
-        <comment v-for="(comment, commentIndex) in comments.data" :key="commentIndex" :comment="comment" />
+        <comment v-for="(comment, commentIndex) in comments.data" :key="commentIndex" :comment="comment" :video="video" />
 
         <div class="text-center">
             <button v-if="comments.next_page_url" @click="fetchComments" class="btn btn-success">
@@ -70,6 +70,7 @@
                 axios.post(`/comments/${this.video.id}`, {
                     body: this.newComment
                 }).then(({ data }) => {
+                    this.newComment = '';
                     this.comments = {
                         ...this.comments,
                         data: [

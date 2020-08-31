@@ -83,6 +83,11 @@ export default {
             votes: this.default_votes
         }
     },
+    watch: {
+        default_votes(newVal) {
+            this.votes = newVal;
+        }
+    },
     computed: {
         upvotes() {
             return this.votes.filter(vote => vote.type === 'up');

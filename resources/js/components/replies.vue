@@ -45,6 +45,16 @@
                 }
             }
         },
+        watch: {
+            comment(newVal) {
+                this.replies = {
+                    data: [],
+                    next_page_url: `/comments/${newVal.id}/replies`
+                }
+
+                this.fetchReplies();
+            }
+        },
         methods: {
             fetchReplies() {
                 axios.get(this.replies.next_page_url)
@@ -59,6 +69,15 @@
 
 
                     })
+            },
+            addReply(reply) {
+                this.replies = {
+                    ...this.replies,
+                    data: [
+                        reply,
+                        ...this.replies.data
+                    ]
+                }
             }
         }
     }
