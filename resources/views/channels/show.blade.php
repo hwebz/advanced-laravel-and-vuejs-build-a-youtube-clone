@@ -34,19 +34,9 @@
 
                         <div class="text-center">
                             <subscribe-button
-                                inline-template
                                 :initial-subscriptions="{{ $channel->subscriptions }}"
                                 :channel="{{ $channel }}"
-                            >
-                                <button
-                                    class="btn btn-danger"
-                                    @click.prevent="toggleSubscription"
-                                >
-                                    @{{ owner ? '' : subscribed ? 'Unsubscribe' : 'Subscribe' }}
-                                    @{{ count }}
-                                    @{{ owner ? 'Subscribers' : ''}}
-                                </button>
-                            </subscribe-button>
+                            />
                         </div>
 
                         @if($channel->editable())

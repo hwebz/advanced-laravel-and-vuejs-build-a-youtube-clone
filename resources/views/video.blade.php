@@ -19,6 +19,35 @@
                     >
                         <source src='{{ asset(Storage::url("videos/{$video->id}/{$video->id}.m3u8")) }}' type="application/x-mpegURL" />
                     </video-js>
+
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                            <h3 class="mt-3">
+                                {{ $video->title }}
+                            </h3>
+
+                            {{ $video->views }} {{ str_plural('view', $video->views)}}
+                        </div>
+                        <div>
+
+                        </div>
+                    </div>
+                    <hr>
+
+                    <div class="d-flex justify-content-between align-items-center mt-5">
+                        <div class="media">
+                            <img class="rounded-circle" src="https://picsum.photos/id/42/200/200" width="50" height="50" class="mr-3" alt="...">
+                            <div class="media-body ml-2">
+                            <h5 class="mt-0 mb-0">{{ $video->channel->name }}</h5>
+                            <span class="small">Published on {{ $video->created_at->toFormattedDateString() }}</span>
+                            </div>
+                        </div>
+
+                        <subscribe-button
+                            :initial-subscriptions="{{ $video->channel->subscriptions }}"
+                            :channel="{{ $video->channel }}"
+                        />
+                    </div>
                 </div>
             </div>
         </div>
