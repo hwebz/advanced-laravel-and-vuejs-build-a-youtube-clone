@@ -138,16 +138,17 @@ EXPOSE 9000
 CMD ["php-fpm"]
 </pre>
 
-7. Configuring PHP, create php/local.ini
+7. Configuring PHP, create php/local.ini (Max file upload is 1024M)
 <pre>
-upload_max_filesize=40M
-post_max_size=40M
+upload_max_filesize=1024M
+post_max_size=1024M
 </pre>
 
-8. Configuring Nginx, create nginx/conf.d/app.conf
+8. Configuring Nginx, create nginx/conf.d/app.conf (max client body size is 1024M)
 <pre>
 server {
     listen 80;
+    client_max_body_size 1024M;
     index index.php index.html;
     error_log  /var/log/nginx/error.log;
     access_log /var/log/nginx/access.log;
