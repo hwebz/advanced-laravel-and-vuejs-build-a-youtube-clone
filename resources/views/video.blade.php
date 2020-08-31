@@ -37,9 +37,10 @@
 
                                     {{ $video->views }} {{ str_plural('view', $video->views)}}
                                 </div>
-                                <div>
-
-                                </div>
+                                <votes
+                                    :default_votes="{{ $video->votes }}"
+                                    owner_id="{{ $video->channel->user_id }}"
+                                />
                             </div>
 
                                 <hr>
@@ -80,6 +81,32 @@
 
 @section('styles')
     <link rel="stylesheet" href="https://vjs.zencdn.net/7.4.1/video-js.css" />
+    <style>
+        .vjs-default-skin {
+            width: 100%;
+        }
+        .thumbs-up, .thumbs-down {
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+            fill: currentColor;
+        }
+        .thumbs-down-active, .thumbs-up-active {
+            color: #3EA6FF;
+        }
+        .thumbs-down {
+            margin-left: 1rem;
+        }
+    </style>
+
+    <style>
+        .w-full {
+            width: 100% !important;
+        }
+        .w-80 {
+            width: 80% !important;
+        }
+    </style>
 @endsection
 
 @section('scripts')
