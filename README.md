@@ -245,6 +245,15 @@ Migrade auth database
 
 > Choose Provider:  Spatie\MediaLibrary\MediaLibraryServiceProvider
 
+> docker run --rm -v $(pwd):/app composer require "pbmedia/laravel-ffmpeg:^4.0"
+
+> art make:job Videos/ConvertForStreaming
+
+> art queue:table
+
+> art queue:failed-table
+
+> art queue:work --sleep=0 --timeout 60000 (for monitoring ConvertForStreaming)
 
 ### Link image inside storage/app/public -> public/storage for viewers
 > art storage:link
@@ -258,3 +267,4 @@ Migrade auth database
 > art make:factory Subscription
 
 > art db:seed
+

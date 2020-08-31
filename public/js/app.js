@@ -50766,8 +50766,8 @@ Vue.component('subscribe-button', {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /home/hado/projects/advanced-laravel-and-vuejs-build-a-youtube-clone/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /home/hado/projects/advanced-laravel-and-vuejs-build-a-youtube-clone/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /home/hadm/learning/advanced-laravel-and-vuejs-build-a-youtube-clone/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /home/hadm/learning/advanced-laravel-and-vuejs-build-a-youtube-clone/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
