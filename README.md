@@ -256,6 +256,8 @@ Migrade auth database
 
 > art queue:work --sleep=0 --timeout 60000 (for monitoring ConvertForStreaming)
 
+> art make:job Videos/CreateVideoThumbnail
+
 ### Link image inside storage/app/public -> public/storage for viewers
 > art storage:link
 
