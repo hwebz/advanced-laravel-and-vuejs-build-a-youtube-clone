@@ -7,27 +7,7 @@
             </button>
         </div>
 
-        <div class="media my-3" v-for="(comment, commentIndex) in comments.data" :key="commentIndex">
-            <avatar :username="comment.user.name" :size="30" class="mr-3" />
-
-            <div class="media-body">
-                <h6 class="mt-0">
-                    {{ comment.user.name }}
-                </h6>
-                <small>{{ comment.body }}</small>
-
-                <div class="d-flex">
-                    <votes
-                        :default_votes="comment.votes"
-                        :entity_id="comment.id"
-                        :owner_id="comment.user.id"
-                    />
-                    <btuton class="btn btn-sm btn-default">Add Reply</btuton>
-                </div>
-
-                <replies :comment="comment" />
-            </div>
-        </div>
+        <comment v-for="(comment, commentIndex) in comments.data" :key="commentIndex" :comment="comment" />
 
         <div class="text-center">
             <button v-if="comments.next_page_url" @click="fetchComments" class="btn btn-success">
@@ -39,15 +19,11 @@
 </template>
 
 <script>
-    import Avatar from 'vue-avatar';
-    import Replies from './replies.vue';
-    import Votes from './votes.vue';
+    import Comment from './comment.vue';
 
     export default {
         components: {
-            Avatar,
-            Replies,
-            Votes
+            Comment
         },
         props: {
             video: {

@@ -1,11 +1,5 @@
 <template>
     <div>
-        <!-- <div class="form-inline my-4 w-full">
-            <input type="text" class="form-control form-control-sm w-80" />
-            <button class="btn btn-sm btn-primary">
-                <small>Add comment</small>
-            </button>
-        </div> -->
         <div class="media my-3" v-for="(reply, replyIndex) in replies.data" :key="replyIndex">
             <avatar :username="reply.user.name" :size="30" class="mr-3" />
 
@@ -31,12 +25,10 @@
 
 <script>
     import Avatar from 'vue-avatar';
-    import Votes from './votes.vue';
 
     export default {
         components: {
-            Avatar,
-            Votes
+            Avatar
         },
         props: {
             comment: {
